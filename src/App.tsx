@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import GlobalStyle from './theme/globalStyles';
+import About from './sections/About';
+import Intro from './sections/Intro';
+import Navbar from './components/Navbar';
+import Work from './sections/Work';
+
+const Container = styled.div`
+  background-color: white;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  padding: 0 15vw;
+  padding-bottom: 5em; //temp
+  @media (max-width: 768px) {
+    padding: 0 10vw;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <GlobalStyle />
+      <Navbar />
+      <Intro />
+      <About />
+      <Work />
+    </Container>
   );
 }
 
