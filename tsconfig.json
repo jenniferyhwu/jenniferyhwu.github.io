@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "rootDirs": ["src"],
     "target": "es5",
     "lib": [
       "dom",

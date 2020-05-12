@@ -1,32 +1,47 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { Keyframes, keyframes, css } from 'styled-components';
 import GlobalStyle from './theme/globalStyles';
 import About from './sections/About';
-import Intro from './sections/Intro';
 import Navbar from './components/Navbar';
 import Work from './sections/Work';
+import Links from './sections/Links';
+import Background from './components/Background';
+import Projects from './sections/Projects';
+import Footer from './sections/Footer';
+
 
 const Container = styled.div`
-  background-color: white;
+  background: none;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 65vw;
   box-sizing: border-box;
-  padding: 0 15vw;
-  padding-bottom: 5em; //temp
+  padding: 8vw 2vw;
+  padding-bottom: 3em;
+
   @media (max-width: 768px) {
-    padding: 0 10vw;
+    min-width: 100vw;
+    padding: 15vw 10vw;
   }
+`;
+
+const WrapperContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 function App() {
   return (
-    <Container>
-      <GlobalStyle />
-      <Navbar />
-      <Intro />
-      <About />
-      <Work />
-    </Container>
+    <WrapperContainer>
+      <Background />
+      <Container>
+        <GlobalStyle />
+        <About />
+        <Links />
+        <Work />
+        <Projects />
+        <Footer />
+      </Container>
+    </WrapperContainer>
   );
 }
 
