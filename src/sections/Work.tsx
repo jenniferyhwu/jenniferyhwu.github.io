@@ -5,17 +5,23 @@ import Card from 'src/components/Card';
 const work = [
   {
     title: "Hack the North",
-    description: "Frontend Developer - building out the 2020 site, attendee dashboard, component library, and more at Canada's biggest hackathon",
+    subtitle: "Frontend Developer",
+    description: "Building out the 2020 site, attendee dashboard, component library, and more at Canada's biggest hackathon",
+    tools: ["react", "typescript", "styled-components"],
     background: "#f5fdff"
   },
   {
     title: "FreshBooks",
-    description: "Full Stack Developer Intern (API team) - working on internal tooling as well as new features for third-party developers",
+    subtitle: "Full Stack Developer Intern (API team)",
+    description: "Working on internal tooling as well as new features for third-party developers",
+    tools: ["python", "ruby", "ember.js", "javascript"],
     background: "#ebf9ff"
   },
   {
     title: "Evertz",
-    description: "Software Developer Intern (FLEX team) - implementing a client-side dashboard for the team's cloud orchestration tool",
+    subtitle: "Software Developer Intern (FLEX team)",
+    description: "Implementing a client-side dashboard for the team's cloud orchestration tool",
+    tools: ["angular", "typescript", "java"],
     background: "#e0f6ff"
   }
 ]

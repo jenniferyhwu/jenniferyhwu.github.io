@@ -1,69 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from 'src/components/Card';
 import Gallery from 'src/components/Gallery';
+import Cloud, { CloudProps } from 'src/components/Cloud';
 
-const projects: GalleryElementProps[] = [
+const projects: CloudProps[] = [
   {
     title: "LitDubs",
-    description: "Frontend Developer - building out the 2020 site, attendee dashboard, component library, and various other tools",
+    description: "Pick a video! Then a language! And voila - a video with all of its audio dubbed over with the translation.",
+    hackathon: "BrickHacks 2019",
+    award: "Best Use of Google Cloud Platform",
+    devpost: "https://devpost.com/software/lit-dubs",
+    github: "https://github.com/kevin51jiang/lit-dubs",
     image: "process.env.PUBLIC_URL + '/me.png'"
   },
   {
-    title: "Cali-Or-Bust",
-    description: "Frontend Developer - building out the 2020 site, attendee dashboard, component library, and various other tools",
-    image: "process.env.PUBLIC_URL + '/me.png'"
-  },
-  {
-    title: "Siloed",
-    description: "Full Stack Developer Intern (API team) - working on internal tooling as well as new features for third-party developers",
+    title: "Cali Or Bust",
+    description: "Bad at interviews? Get some practice with a data-driven app that’ll tell it to you like it is!",
+    hackathon: "TOHacks 2019",
+    award: "Best Use of Voiceflow",
+    devpost: "https://devpost.com/software/tohacks2019",
+    github: "https://github.com/jenniferyhwu/TOHacks2019",
     image: "process.env.PUBLIC_URL + '/me.png'"
   },
   {
     title: "Cordelia",
-    description: "Software Developer Intern (FLEX team) - implementing a client-side dashboard for the team's cloud orchestration tool",
+    description: "So first thing we did in Boston was get lost because no one had data. Turns out combining maps and SMS solves a similar problem :D",
+    hackathon: "BostonHacks 2018",
+    award: "Best Use of HERE.com",
+    devpost: "https://devpost.com/software/bostonhacks-6mabpz",
+    github: "https://github.com/jenniferyhwu/Cordelia",
     image: "process.env.PUBLIC_URL + '/me.png'"
   },
   {
-    title: "Wallai",
-    description: "Software Developer Intern (FLEX team) - implementing a client-side dashboard for the team's cloud orchestration tool",
-    image: "process.env.PUBLIC_URL + '/me.png'"
-  },
-  {
-    title: "Eigenfaces",
-    description: "Full Stack Developer Intern (API team) - working on internal tooling as well as new features for third-party developers",
-    image: "process.env.PUBLIC_URL + '/me.png'"
-  },
-  {
-    title: "IScribe",
-    description: "Full Stack Developer Intern (API team) - working on internal tooling as well as new features for third-party developers",
+    title: "Siloed",
+    description: "When we made this, we told ourselves it was so dumb that we'd never put on any resume or portfolio. But I love it, so here you go!",
+    hackathon: "TerribleHacks 2019",
+    award: "Most Millenial Hack",
+    devpost: "https://devpost.com/software/siloed",
+    github: "https://github.com/jenniferyhwu/siloed",
     image: "process.env.PUBLIC_URL + '/me.png'"
   },
 ]
-
-interface GalleryElementProps {
-  title: string;
-  description: string;
-  image: string;
-}
-
-const GalleryElementContainer = styled.div`
-  border-radius: 50%;
-  background: white;
-  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, .07);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10em;
-  width: 10em;
-  padding: 2em;
-  margin: 1.5em;
-
-  @media (max-width: 767px) and (min-width: 400px) {
-    height: 12em;
-    width: 12em;
-  }
-`;
 
 const Header = styled.h1`
   color: #009bbd;
@@ -72,11 +49,6 @@ const Header = styled.h1`
   @media (max-width: 767px) {
     text-align: center;
   }
-`;
-
-const SubContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const Container = styled.div`
@@ -95,24 +67,8 @@ function group<T>(arr: T[], groupSize: number) {
 }
 
 const getGalleryElements = (groupSize: number) => {
-  const popBubble = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.currentTarget.style.transition = "all .15s ease-out";
-    e.currentTarget.style.transform = "scale(1.08)";
-  }
-
-  const unPopBubble = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.currentTarget.style.transition = "all .2s ease-in";
-    e.currentTarget.style.transform = "scale(1)";
-  }
-
-  return group(projects, groupSize).map(items => 
-    <SubContainer>
-      {items.map(item => {
-        return <GalleryElementContainer onMouseEnter={popBubble} onMouseLeave={unPopBubble}>
-          {item.title}
-        </GalleryElementContainer>
-      })}
-    </SubContainer>
+  return projects.map(item => 
+    <Cloud {... item} />
   )
 }
 

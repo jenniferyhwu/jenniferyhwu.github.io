@@ -42,6 +42,12 @@ const Tagline = styled.h2`
   }
 `;
 
+// const SubTagline = styled(Tagline)`
+//   color: #7ec0ce;
+//   font-size: 1em;
+//   margin-top: 0;
+// `;
+
 const BubbleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,13 +87,14 @@ const Highlight: React.FC = () => {
 
   return (
     <Container>
-      <Tagline>Looking for Fall 2020 internships!</Tagline>
+      <Tagline>Looking for Fall 2020 Internships!</Tagline>
+      {/* <SubTagline>I did my best to make it worth your while ;)</SubTagline> */}
       <SubContainer>
         {links.map(item => {
           return (
-            <BubbleLinkWrapper href={item.path}>
+            <BubbleLinkWrapper key={item.label} href={item.path}>
               <BubbleContainer>
-                <Bubble key={item.label} icon={item.icon}  />
+                <Bubble icon={item.icon}  />
                 {isMobile ? null : <BubbleLabel key={item.label}>{item.label}</BubbleLabel>}
               </BubbleContainer>
             </BubbleLinkWrapper>

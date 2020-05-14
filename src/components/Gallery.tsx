@@ -37,6 +37,10 @@ const TrackerContainer = styled.div<{ shiftAmount: number, numberOfItems: number
 
 const ItemContainer = styled.div`
   flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
   position: relative;
 `;
 
@@ -117,8 +121,8 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
 
         <SubContainer>
           <ContentContainer shiftAmount={activeItem}>
-            {content.map(item => 
-              <ItemContainer>
+            {content.map((item, i) => 
+              <ItemContainer key={i}>
                 {item}
               </ItemContainer>
             )}
@@ -132,7 +136,7 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
         <FontAwesomeIcon className="tracker-icon" icon={fasFaCircle} />
 
         {content.map((_, i) => 
-          <FontAwesomeIcon icon={farFaCircle} onClick={() => changeToItem(i)}/>
+          <FontAwesomeIcon key={i} icon={farFaCircle} onClick={() => changeToItem(i)}/>
         )}
 
       </TrackerContainer>

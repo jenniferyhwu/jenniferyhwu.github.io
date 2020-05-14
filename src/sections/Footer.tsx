@@ -54,6 +54,9 @@ const InfoLinksContainer = styled.div`
 
 const Text = styled.p`
   color: #00add2;
+  @media (max-width: 767px) {
+    text-align: center;
+  }
 `;
 
 const Container = styled.div`
@@ -79,7 +82,7 @@ const Footer: React.FC = () => {
           </InfoLinkSubContainer>
         )}
       </InfoLinksContainer>
-      <Text>Made with 🐣 by Jennifer Wu</Text>
+      <Text>Made with <span role="img" aria-label="hatching-chick emoji">🐣</span> by Jennifer Wu</Text>
     </Container>
   )
 }

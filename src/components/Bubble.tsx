@@ -40,11 +40,13 @@ const Bubble: React.FC<BubbleProps> = ({ icon }) => {
   const popBubble = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.currentTarget.style.transition = "all .15s ease-out";
     e.currentTarget.style.transform = "scale(1.08)";
+    //e.currentTarget.style.background = "#ffb5c5";
   }
 
   const unPopBubble = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.currentTarget.style.transition = "all .2s ease-in";
     e.currentTarget.style.transform = "scale(1)";
+    //e.currentTarget.style.background = "#009bbd";
   }
 
   return (

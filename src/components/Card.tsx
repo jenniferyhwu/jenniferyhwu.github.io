@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 interface CardProps {
   title: string;
+  subtitle: string;
   description: string;
+  tools: string[];
   background?: string;
 }
 
@@ -13,6 +15,7 @@ const Text = styled.p`
   font-weight: 300;
   font-family: Roboto;
   line-height: 1.5em;
+  margin-bottom: 0;
 
   @media (max-width: 768px) {
     margin-top: 0;
@@ -22,16 +25,49 @@ const Text = styled.p`
 const Header = styled.h2`
   color: #009bbd;
   letter-spacing: 0.2em;
+  margin-top: 0;
+`;
+
+const SubHeader = styled(Header)`
+  letter-spacing: 0.05em;
+  font-size: 1em;
+  margin: 0;
+`;
+
+const NoteText = styled.p`
+  color: white;
+  font-weight: 300;
+  font-size: 0.9em;
+  margin: 0;
+`;
+
+const Note = styled.div`
+  background: #009bbd;
+  padding: 5px 7px;
+`;
+
+const NotesContainer = styled.div`
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 20px;
+  height: 30px;
+
+  > :not(:first-child) {
+    margin-left: 15px;
+  }
 `;
 
 const Container = styled.div<{ background: string }>`
   background: ${({ background }) => background};
+  width: 100%;
   //border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.07), 0 6px 15px 0 rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
-  height: 15em;
-  padding: 2em;
+  justify-content: center;
+  height: 16em;
+  padding: 3em 4em;
   margin: 20px;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -66,10 +102,18 @@ const Container = styled.div<{ background: string }>`
   }
 `;
 
-const Card: React.FC<CardProps> = ({ title, description, background = "white"}) => {
+const Card: React.FC<CardProps> = ({ title, subtitle, description, tools, background = "white"}) => {
   return (
     <Container background={background}>
+      <NotesContainer>
+        {tools.map(tool => 
+          <Note key={tool}>
+            <NoteText>{tool}</NoteText>
+          </Note>
+        )}
+      </NotesContainer>
       <Header>{title}</Header>
+      <SubHeader>{subtitle}</SubHeader>
       <Text>{description}</Text>
     </Container>
   )
