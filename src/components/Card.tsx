@@ -103,15 +103,17 @@ const Container = styled.div<{ background: string }>`
 `;
 
 const Card: React.FC<CardProps> = ({ title, subtitle, description, tools, background = "white"}) => {
+  const isMobile = window.innerWidth <= 500;
+
   return (
     <Container background={background}>
-      <NotesContainer>
+      {isMobile ? null : <NotesContainer>
         {tools.map(tool => 
           <Note key={tool}>
             <NoteText>{tool}</NoteText>
           </Note>
         )}
-      </NotesContainer>
+      </NotesContainer>}
       <Header>{title}</Header>
       <SubHeader>{subtitle}</SubHeader>
       <Text>{description}</Text>
