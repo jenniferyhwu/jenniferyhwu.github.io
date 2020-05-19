@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 interface CardProps {
   title: string;
+  link: string;
   subtitle: string;
+  timePeriod: string;
   description: string;
   tools: string[];
   background?: string;
@@ -102,22 +104,28 @@ const Container = styled.div<{ background: string }>`
   }
 `;
 
-const Card: React.FC<CardProps> = ({ title, subtitle, description, tools, background = "white"}) => {
+const LinkContainer = styled.a`
+  text-decoration: none;
+`;
+
+const Card: React.FC<CardProps> = ({ title, link, subtitle, timePeriod, description, tools, background = "white"}) => {
   const isMobile = window.innerWidth <= 500;
 
   return (
-    <Container background={background}>
-      {isMobile ? null : <NotesContainer>
-        {tools.map(tool => 
-          <Note key={tool}>
-            <NoteText>{tool}</NoteText>
-          </Note>
-        )}
-      </NotesContainer>}
-      <Header>{title}</Header>
-      <SubHeader>{subtitle}</SubHeader>
-      <Text>{description}</Text>
-    </Container>
+    <LinkContainer href={link}>
+      <Container background={background}>
+        {isMobile ? null : <NotesContainer>
+          {tools.map(tool => 
+            <Note key={tool}>
+              <NoteText>{tool}</NoteText>
+            </Note>
+          )}
+        </NotesContainer>}
+        <Header>{title}</Header>
+        <SubHeader>{subtitle} | {timePeriod}</SubHeader>
+        <Text>{description}</Text>
+      </Container>
+    </LinkContainer>
   )
 }
 

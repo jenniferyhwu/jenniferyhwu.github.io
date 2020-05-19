@@ -52,10 +52,16 @@ const InfoLinksContainer = styled.div`
   display: flex;
 `;
 
-const Text = styled.p`
+const LinkText = styled.a`
   color: #00add2;
+  margin-top: 10px;
+  text-decoration: underline;
   @media (max-width: 767px) {
     text-align: center;
+  }
+
+  :hover {
+    opacity: 0.8;
   }
 `;
 
@@ -82,7 +88,7 @@ const Footer: React.FC = () => {
           </InfoLinkSubContainer>
         )}
       </InfoLinksContainer>
-      <Text>Made with <span role="img" aria-label="hatching-chick emoji">🐣</span> by Jennifer Wu</Text>
+      <LinkText href="https://github.com/jenniferyhwu/jenniferyhwu.github.io/tree/dev">Made with <span role="img" aria-label="hatching-chick emoji">🐣</span> by Jennifer Wu</LinkText>
     </Container>
   )
 }
