@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const BackgroundLayer = styled.div`
   background: #e1feff;
@@ -15,9 +15,7 @@ const BackgroundLayer = styled.div`
 `;
 
 const Background: React.FC = () => {
-  return (
-    <BackgroundLayer />
-  )
-}
+  return <BackgroundLayer />;
+};
 
-export default Background
+export default Background;

@@ -1,30 +1,32 @@
-import React from 'react';
-import styled, { Keyframes, keyframes, css } from 'styled-components';
-import { fadeIn } from 'react-animations';
-import Bubble from 'src/components/Bubble';
+import React from "react";
+import styled, { Keyframes, keyframes, css } from "styled-components";
+import { fadeIn } from "react-animations";
+import Bubble from "src/components/Bubble";
+import { useWindowSize } from "src/utils/useWindowSize";
+import GlobalConstants from "src/theme/globalConstants";
 
 const links = [
   {
     label: "RESUME",
     icon: "resume",
-    path: process.env.PUBLIC_URL + "/resume.pdf"
+    path: process.env.PUBLIC_URL + "/resume.pdf",
   },
   {
     label: "GITHUB",
     icon: "github",
-    path: "https://github.com/jenniferyhwu"
+    path: "https://github.com/jenniferyhwu",
   },
   {
     label: "LINKEDIN",
     icon: "linkedin",
-    path: "https://www.linkedin.com/in/jyhwu/"
+    path: "https://www.linkedin.com/in/jyhwu/",
   },
   {
     label: "EMAIL",
     icon: "contact",
-    path: "mailto:jyhwuuu@gmail.com"
-  }
-]
+    path: "mailto:jyhwuuu@gmail.com",
+  },
+];
 
 const fadeInAnimation: Keyframes = keyframes`${fadeIn}`;
 
@@ -83,26 +85,29 @@ const Container = styled.div`
 `;
 
 const Highlight: React.FC = () => {
-  let isMobile = window.innerWidth <= 750;
+  const { windowWidth } = useWindowSize();
+  const isMobile = windowWidth <= GlobalConstants.breakpoint.mobile;
 
   return (
     <Container>
       <Tagline>Looking for Fall 2020 Internships!</Tagline>
       {/* <SubTagline>I did my best to make it worth your while ;)</SubTagline> */}
       <SubContainer>
-        {links.map(item => {
+        {links.map((item) => {
           return (
             <BubbleLinkWrapper key={item.label} href={item.path}>
               <BubbleContainer>
-                <Bubble icon={item.icon}  />
-                {isMobile ? null : <BubbleLabel key={item.label}>{item.label}</BubbleLabel>}
+                <Bubble icon={item.icon} />
+                {isMobile ? null : (
+                  <BubbleLabel key={item.label}>{item.label}</BubbleLabel>
+                )}
               </BubbleContainer>
             </BubbleLinkWrapper>
-          )
+          );
         })}
       </SubContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default Highlight
+export default Highlight;

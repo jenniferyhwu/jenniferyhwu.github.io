@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Text = styled.p`
   color: #7ec0ce;
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
       <Text>my work</Text>
       <Text>my life</Text>
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

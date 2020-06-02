@@ -1,6 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Cloud as CloudIcon} from 'react-feather';
+import React from "react";
+import styled from "styled-components";
+import { Cloud as CloudIcon } from "react-feather";
+import { useWindowSize } from "src/utils/useWindowSize";
+import GlobalConstants from "src/theme/globalConstants";
 
 export interface CloudProps {
   title: string;
@@ -16,7 +18,7 @@ const CloudHeadingContainer = styled.div`
   box-sizing: border-box;
   border-radius: 50%;
   background: #ffedf2;
-  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, .07);
+  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, 0.07);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,16 +27,13 @@ const CloudHeadingContainer = styled.div`
   height: 300px;
   z-index: 2;
 
-  @media (max-width: 767px) and (min-width: 400px) {
-    height: 12em;
-    width: 12em;
-  }
-
-  @media (max-width: 400px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     background: white;
+    width: 300px;
+    height: 300px;
   }
 
-  @media (max-width: 376px) {
+  @media (max-width: ${GlobalConstants.breakpoint.mobile}px) {
     width: 280px;
     height: 280px;
     padding: 2em;
@@ -50,7 +49,7 @@ const CloudInfoContainer = styled.div`
   padding-left: 1em;
   margin: 1.5em;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     padding: 0.5em;
   }
 `;
@@ -63,7 +62,7 @@ const CloudText = styled.p`
   line-height: 1.5em;
   margin: 0.5em;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     font-size: 1em;
   }
 `;
@@ -80,7 +79,7 @@ const CloudDevpostContainer = styled.div`
   width: 150px;
   z-index: 3;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     bottom: -60px;
     right: -10px;
   }
@@ -92,7 +91,7 @@ const CloudGithubContainer = styled(CloudDevpostContainer)`
   height: 100px;
   width: 100px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     bottom: -60px;
     right: 100px;
   }
@@ -103,7 +102,7 @@ const CloudLink = styled.a<{ color: string }>`
   text-decoration: none;
   margin-top: 8%;
   z-index: 4;
-  color: ${props => props.color};
+  color: ${(props) => props.color};
 `;
 
 const CloudHeading = styled.h2`
@@ -114,7 +113,7 @@ const CloudHeading = styled.h2`
   margin-bottom: 0.5em;
   text-align: center;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     color: #009bbd;
   }
 `;
@@ -124,7 +123,7 @@ const CloudHeadingText = styled.p`
   margin: 0;
   text-align: center;
 
-  @media (max-width: 400px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     color: #009bbd;
   }
 `;
@@ -138,10 +137,10 @@ const Container = styled.div`
   border-radius: 125px;
   display: flex;
   background: white;
-  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, .07);
+  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, 0.07);
   margin: 30px 0;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     width: auto;
   }
 
@@ -155,8 +154,9 @@ const Container = styled.div`
 `;
 
 const Cloud: React.FC<CloudProps> = (item) => {
-  const isMobile = window.innerWidth <= 767;
-  
+  const { windowWidth } = useWindowSize();
+  const isTablet = windowWidth <= GlobalConstants.breakpoint.tablet;
+
   return (
     <Container>
       <CloudHeadingContainer>
@@ -165,23 +165,35 @@ const Cloud: React.FC<CloudProps> = (item) => {
         <CloudHeadingText>-</CloudHeadingText>
         <CloudHeadingText>{item.award}</CloudHeadingText>
       </CloudHeadingContainer>
-      {isMobile ? null : 
+      {isTablet ? null : (
         <>
           <CloudInfoContainer>
             <CloudText>{item.description}</CloudText>
           </CloudInfoContainer>
           <CloudDevpostContainer>
-            <CloudLink href={item.devpost} color="#8c5900">Devpost</CloudLink>
-            <CloudIcon className="cloud-shaped devpost-cloud" color="#fffade" size={200} />
+            <CloudLink href={item.devpost} color="#8c5900">
+              Devpost
+            </CloudLink>
+            <CloudIcon
+              className="cloud-shaped devpost-cloud"
+              color="#fffade"
+              size={200}
+            />
           </CloudDevpostContainer>
           <CloudGithubContainer>
-            <CloudLink href={item.github} color="#8553ad">GitHub</CloudLink>
-            <CloudIcon className="cloud-shaped github-cloud" color="#f7ebff" size={120} />
+            <CloudLink href={item.github} color="#8553ad">
+              GitHub
+            </CloudLink>
+            <CloudIcon
+              className="cloud-shaped github-cloud"
+              color="#f7ebff"
+              size={120}
+            />
           </CloudGithubContainer>
         </>
-      }
+      )}
     </Container>
-  )
-}
+  );
+};
 
-export default Cloud
+export default Cloud;

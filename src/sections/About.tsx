@@ -1,12 +1,12 @@
-import React from 'react';
-import styled, { Keyframes, keyframes, css } from 'styled-components';
-import { fadeInDown } from 'react-animations';
+import React from "react";
+import styled, { Keyframes, keyframes, css } from "styled-components";
+import { fadeInDown } from "react-animations";
+import GlobalConstants from "src/theme/globalConstants";
 
 const fadeInDownAnimation: Keyframes = keyframes`${fadeInDown}`;
 
-const ME2 = "Hi! I'm Jennifer, and I'm a software developer in my second year of CS at the University of Waterloo! I'm passionate about building things that empower everyday people to dream and create."
-const ME3 = "I'm Jennifer, and I'm a software developer in my second year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create."
-const ME = "I'm Jennifer, and I'm a software developer in my second year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create, but mostly I just like coding with fun people 😄"
+const ME =
+  "I'm Jennifer, and I'm a software developer in my second year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create, but mostly I just like coding with fun people 😄";
 
 const Text = styled.p`
   color: #19798d;
@@ -25,7 +25,7 @@ const Header = styled.h1`
   letter-spacing: 0.15em;
   margin-bottom: 0.3em;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     margin-top: 1em;
   }
 `;
@@ -34,9 +34,10 @@ const ProfileImage = styled.img`
   width: 250px;
   height: auto;
   border-radius: 50%;
+  margin-right: 5em;
 
-  @media (min-width: 769px) {
-    margin-right: 5em;
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
+    margin-right: 0;
   }
 `;
 
@@ -71,15 +72,19 @@ const SubContainer = styled.div`
   border-radius: 50px;
   box-sizing: border-box;
   padding: 1em 3em;
-  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, .07);
+  box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, 0.07);
   position: relative;
   animation: ${css`0.8s ${fadeInDownAnimation}`};
 
-  @media (max-width: 768px) {
-    align-items: center;
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
+    margin-top: 2em;
     text-align: center;
-    background: none;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
     padding: 0;
+    background: none;
     box-shadow: none;
   }
 `;
@@ -89,7 +94,7 @@ const Container = styled.div`
   margin-bottom: 5em;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     flex-direction: column;
     margin-bottom: 2em;
   }
@@ -98,13 +103,13 @@ const Container = styled.div`
 const About: React.FC = () => {
   return (
     <Container>
-      <ProfileImage src={process.env.PUBLIC_URL + '/me.png'} />
+      <ProfileImage src={process.env.PUBLIC_URL + "/me.png"} />
       <SubContainer>
         <Header>Hey there!</Header>
         <Text>{ME}</Text>
       </SubContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default About
+export default About;

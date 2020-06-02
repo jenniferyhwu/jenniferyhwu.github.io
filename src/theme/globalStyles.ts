@@ -11,6 +11,6 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     min-width: 100vw;
   }
-`
+`;
 
 export default GlobalStyle;

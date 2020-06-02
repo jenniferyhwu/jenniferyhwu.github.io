@@ -1,32 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import { GitHub, FileText, Linkedin, Send } from 'react-feather';
+import React from "react";
+import styled from "styled-components";
+import { GitHub, FileText, Linkedin, Send } from "react-feather";
 
 const icons: Record<string, any> = {
   resume: <FileText color="#00add2" size={32} strokeWidth={1} />,
   github: <GitHub color="#00add2" size={32} strokeWidth={1} />,
   linkedin: <Linkedin color="#00add2" size={32} strokeWidth={1} />,
-  contact: <Send color="#00add2" size={32} strokeWidth={1} />
-}
+  contact: <Send color="#00add2" size={32} strokeWidth={1} />,
+};
 
 const links = [
-    {
-      label: "resume",
-      path: process.env.PUBLIC_URL + "/resume.pdf"
-    },
-    {
-      label: "github",
-      path: "https://github.com/jenniferyhwu"
-    },
-    {
-      label: "linkedin",
-      path: "https://www.linkedin.com/in/jyhwu"
-    },
-    {
-      label: "contact",
-      path: "mailto:jyhwuuu@gmail.com"
-    },
-  ]
+  {
+    label: "resume",
+    path: process.env.PUBLIC_URL + "/resume.pdf",
+  },
+  {
+    label: "github",
+    path: "https://github.com/jenniferyhwu",
+  },
+  {
+    label: "linkedin",
+    path: "https://www.linkedin.com/in/jyhwu",
+  },
+  {
+    label: "contact",
+    path: "mailto:jyhwuuu@gmail.com",
+  },
+];
 
 const InfoLink = styled.a`
   color: #00add2;
@@ -80,17 +80,21 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <InfoLinksContainer>
-        {links.map(item => 
+        {links.map((item) => (
           <InfoLinkSubContainer key={item.label}>
-            <InfoLink href={item.path}>
-              {icons[item.label]}
-            </InfoLink>
+            <InfoLink href={item.path}>{icons[item.label]}</InfoLink>
           </InfoLinkSubContainer>
-        )}
+        ))}
       </InfoLinksContainer>
-      <LinkText href="https://github.com/jenniferyhwu/jenniferyhwu.github.io/tree/dev">Made with <span role="img" aria-label="hatching-chick emoji">🐣</span> by Jennifer Wu</LinkText>
+      <LinkText href="https://github.com/jenniferyhwu/jenniferyhwu.github.io/tree/dev">
+        Made with{" "}
+        <span role="img" aria-label="hatching-chick emoji">
+          🐣
+        </span>{" "}
+        by Jennifer Wu
+      </LinkText>
     </Container>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

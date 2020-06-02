@@ -1,5 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { useWindowSize } from "src/utils/useWindowSize";
+import GlobalConstants from "src/theme/globalConstants";
 
 interface CardProps {
   title: string;
@@ -77,14 +79,14 @@ const Container = styled.div<{ background: string }>`
 
   @media (max-width: 767px) {
     margin: 20px 0;
-    width: 100vw;
     height: 16em;
     padding: 20px;
   }
 
   &::after {
-    content: '';
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.13), 0 6px 15px 0 rgba(0, 0, 0, 0.07);
+    content: "";
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.13),
+      0 6px 15px 0 rgba(0, 0, 0, 0.07);
     opacity: 0;
     height: 100%;
     width: 100%;
@@ -108,25 +110,38 @@ const LinkContainer = styled.a`
   text-decoration: none;
 `;
 
-const Card: React.FC<CardProps> = ({ title, link, subtitle, timePeriod, description, tools, background = "white"}) => {
-  const isMobile = window.innerWidth <= 500;
+const Card: React.FC<CardProps> = ({
+  title,
+  link,
+  subtitle,
+  timePeriod,
+  description,
+  tools,
+  background = "white",
+}) => {
+  const { windowWidth } = useWindowSize();
+  const isTablet = windowWidth <= GlobalConstants.breakpoint.tablet;
 
   return (
     <LinkContainer href={link}>
       <Container background={background}>
-        {isMobile ? null : <NotesContainer>
-          {tools.map(tool => 
-            <Note key={tool}>
-              <NoteText>{tool}</NoteText>
-            </Note>
-          )}
-        </NotesContainer>}
+        {isTablet ? null : (
+          <NotesContainer>
+            {tools.map((tool) => (
+              <Note key={tool}>
+                <NoteText>{tool}</NoteText>
+              </Note>
+            ))}
+          </NotesContainer>
+        )}
         <Header>{title}</Header>
-        <SubHeader>{subtitle} | {timePeriod}</SubHeader>
+        <SubHeader>
+          {subtitle} | {timePeriod}
+        </SubHeader>
         <Text>{description}</Text>
       </Container>
     </LinkContainer>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
