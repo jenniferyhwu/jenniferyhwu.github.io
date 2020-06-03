@@ -6,6 +6,7 @@ const GlobalConstants = {
     tablet: 768,
     smallTablet: 675,
     mobile: 425,
+    smallMobile: 350,
   },
 };
 

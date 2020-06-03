@@ -39,6 +39,12 @@ const CloudHeadingContainer = styled.div`
     height: 280px;
     padding: 2em;
   }
+
+  @media (max-width: ${GlobalConstants.breakpoint.smallMobile}px) {
+    width: 250px;
+    height: 250px;
+    box-shadow: 3px 4px 6px 2px rgba(61, 105, 122, 0.07);
+  }
 `;
 
 const CloudInfoContainer = styled.div`

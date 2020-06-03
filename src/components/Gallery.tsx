@@ -46,6 +46,10 @@ const ItemContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+
+  @media (max-width: ${GlobalConstants.breakpoint.smallMobile}px) {
+    padding: 0;
+  }
 `;
 
 const ContentContainer = styled.div<{ shiftAmount: number }>`
