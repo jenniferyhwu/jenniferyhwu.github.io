@@ -143,7 +143,7 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
           <ChevronsLeft />
         </Button>
 
-        <SubContainer className="here">
+        <SubContainer>
           <ContentContainer shiftAmount={activeItem} {...handlers}>
             {content.map((item, i) => (
               <ItemContainer key={i}>{item}</ItemContainer>
