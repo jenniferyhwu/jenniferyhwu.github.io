@@ -16,20 +16,20 @@ const work = [
   {
     title: "FreshBooks",
     link: "https://www.freshbooks.com/",
-    subtitle: "Full Stack Developer Intern (API team)",
+    subtitle: "Full Stack Developer Intern",
     timePeriod: "Jan 2020 - Apr 2020",
     description:
-      "Working on internal tooling as well as new features for third-party developers",
+      "Working on internal tooling as well as new features for third-party developers on the API team",
     tools: ["python", "ruby", "ember.js", "javascript"],
     background: "#ebf9ff",
   },
   {
     title: "Evertz",
     link: "https://evertz.com/",
-    subtitle: "Software Developer Intern (FLEX team)",
+    subtitle: "Software Developer Intern",
     timePeriod: "May 2019 - Aug 2019",
     description:
-      "Implementing a client-side dashboard for the team's cloud orchestration tool",
+      "Created the web client for a cloud orchestration product with Angular 8 from the ground up",
     tools: ["angular", "typescript", "java"],
     background: "#e0f6ff",
   },

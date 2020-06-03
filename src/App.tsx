@@ -7,6 +7,7 @@ import Links from "./sections/Links";
 import Background from "./components/Background";
 import Projects from "./sections/Projects";
 import Footer from "./sections/Footer";
+import GlobalConstants from "./theme/globalConstants";
 
 const Container = styled.div`
   background: none;
@@ -17,9 +18,13 @@ const Container = styled.div`
   padding: 8vw 10vw;
   padding-bottom: 3em;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     min-width: 100vw;
     padding: 10vh 5vw;
+  }
+
+  @media (max-width: ${GlobalConstants.breakpoint.smallTablet}px) {
+    padding: 5vh 5vw;
   }
 `;
 

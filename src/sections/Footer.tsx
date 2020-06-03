@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GitHub, FileText, Linkedin, Send } from "react-feather";
+import GlobalConstants from "src/theme/globalConstants";
 
 const icons: Record<string, any> = {
   resume: <FileText color="#00add2" size={32} strokeWidth={1} />,
@@ -33,10 +34,6 @@ const InfoLink = styled.a`
   font-size: 1em;
   text-decoration: none;
   margin: 0 1em;
-
-  &.highlight {
-    color: #00add2;
-  }
 `;
 
 const InfoLinkSubContainer = styled.div`
@@ -45,6 +42,10 @@ const InfoLinkSubContainer = styled.div`
 
   .separator-icon {
     margin: 0 30px;
+  }
+
+  :hover {
+    opacity: 0.8;
   }
 `;
 
@@ -55,7 +56,7 @@ const InfoLinksContainer = styled.div`
 const LinkText = styled.a`
   color: #00add2;
   margin-top: 10px;
-  text-decoration: underline;
+  text-decoration: inherit;
   @media (max-width: 767px) {
     text-align: center;
   }
@@ -71,7 +72,7 @@ const Container = styled.div`
   align-items: center;
   margin-top: 7em;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     margin-top: 4em;
   }
 `;
@@ -82,11 +83,16 @@ const Footer: React.FC = () => {
       <InfoLinksContainer>
         {links.map((item) => (
           <InfoLinkSubContainer key={item.label}>
-            <InfoLink href={item.path}>{icons[item.label]}</InfoLink>
+            <InfoLink href={item.path} target="_blank">
+              {icons[item.label]}
+            </InfoLink>
           </InfoLinkSubContainer>
         ))}
       </InfoLinksContainer>
-      <LinkText href="https://github.com/jenniferyhwu/jenniferyhwu.github.io/tree/dev">
+      <LinkText
+        href="https://github.com/jenniferyhwu/jenniferyhwu.github.io/tree/dev"
+        target="_blank"
+      >
         Made with{" "}
         <span role="img" aria-label="hatching-chick emoji">
           🐣

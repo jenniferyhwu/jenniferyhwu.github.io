@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle as farFaCircle } from "@fortawesome/free-regular-svg-icons";
-import {
-  faCircle as fasFaCircle,
-  faChevronRight as fasChevronRight,
-  faChevronLeft as fasChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
-import { ChevronsLeft, ChevronsRight } from "react-feather";
+import { ChevronsLeft, ChevronsRight, Circle } from "react-feather";
 import GlobalConstants from "src/theme/globalConstants";
+import Button from "./Button";
 
 interface GalleryProps {
   numberOfItems: number;
@@ -24,8 +18,9 @@ const TrackerContainer = styled.div<{
   color: #009bbd;
   display: flex;
   justify-content: center;
+  position: relative;
 
-  .fa-circle {
+  svg {
     font-size: 1em;
 
     &:nth-child(n + 3) {
@@ -37,9 +32,10 @@ const TrackerContainer = styled.div<{
     position: absolute;
     transition: all 0.4s cubic-bezier(0.45, 0.02, 0.04, 1.02);
     transform: ${(props) =>
-      `translateX(calc(-${props.numberOfItems - 0.5}em + 50% + ${
+      `translateX(calc(-${props.numberOfItems + 0.5}em + 50% + ${
         props.shiftAmount
-      } * 2em))`};
+      } * 2.5em))`};
+    fill: #009bbd;
   }
 `;
 
@@ -61,7 +57,6 @@ const ContentContainer = styled.div<{ shiftAmount: number }>`
 `;
 
 const SubContainer = styled.div`
-  width: 100%;
   overflow: hidden;
 `;
 
@@ -71,8 +66,19 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  .disabled {
-    stroke: gainsboro;
+  .chevrons {
+    color: #009bbd;
+    z-index: 2;
+
+    svg {
+      width: 64px;
+      height: 64px;
+
+      @media (max-width: ${GlobalConstants.breakpoint.mobile}px) {
+        width: 48px;
+        height: 48px;
+      }
+    }
   }
 
   .chevronsLeft {
@@ -81,9 +87,6 @@ const Container = styled.div`
     @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
       margin-left: -12px;
       margin-right: -48px;
-      z-index: 2;
-      width: 48px;
-      height: 48px;
     }
   }
 
@@ -93,9 +96,9 @@ const Container = styled.div`
     @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
       margin-right: -12px;
       margin-left: -48px;
-      z-index: 2;
-      width: 48px;
-      height: 48px;
+    }
+
+    @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     }
   }
 `;
@@ -121,14 +124,16 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
   return (
     <>
       <Container>
-        <ChevronsLeft
-          color="#009bbd"
-          size={64}
-          className={"chevronsLeft " + (activeItem === 0 ? "disabled" : "")}
+        <Button
+          className={
+            "chevrons chevronsLeft " + (activeItem === 0 ? "disabled" : "")
+          }
           onClick={changePrevItem}
-        />
+        >
+          <ChevronsLeft />
+        </Button>
 
-        <SubContainer>
+        <SubContainer className="here">
           <ContentContainer shiftAmount={activeItem}>
             {content.map((item, i) => (
               <ItemContainer key={i}>{item}</ItemContainer>
@@ -136,26 +141,22 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
           </ContentContainer>
         </SubContainer>
 
-        <ChevronsRight
-          color="#009bbd"
-          size={64}
+        <Button
           className={
-            "chevronsRight " +
+            "chevrons chevronsRight " +
             (activeItem === numberOfItems - 1 ? "disabled" : "")
           }
           onClick={changeNextItem}
-        />
+        >
+          <ChevronsRight />
+        </Button>
       </Container>
 
       <TrackerContainer shiftAmount={activeItem} numberOfItems={numberOfItems}>
-        <FontAwesomeIcon className="tracker-icon" icon={fasFaCircle} />
+        <Circle className="tracker-icon" />
 
         {content.map((_, i) => (
-          <FontAwesomeIcon
-            key={i}
-            icon={farFaCircle}
-            onClick={() => changeToItem(i)}
-          />
+          <Circle key={i} onClick={() => changeToItem(i)} />
         ))}
       </TrackerContainer>
     </>

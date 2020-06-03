@@ -4,6 +4,7 @@ import { fadeIn } from "react-animations";
 import Bubble from "src/components/Bubble";
 import { useWindowSize } from "src/utils/useWindowSize";
 import GlobalConstants from "src/theme/globalConstants";
+import LinkContainer from "src/components/LinkContainer";
 
 const links = [
   {
@@ -39,7 +40,7 @@ const BubbleLabel = styled.h3`
 const Tagline = styled.h2`
   color: #00add2;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.smallTablet}px) {
     text-align: center;
   }
 `;
@@ -56,19 +57,15 @@ const BubbleContainer = styled.div`
   align-items: center;
 `;
 
-const BubbleLinkWrapper = styled.a`
-  text-decoration: none;
-`;
-
 const SubContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.smallTablet}px) {
+    max-width: 475px;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 -2em;
   }
 `;
 
@@ -79,30 +76,29 @@ const Container = styled.div`
   margin: 2em 0;
   animation: ${css`1s ${fadeInAnimation}`};
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.smallTablet}px) {
     margin: 1em 0;
   }
 `;
 
 const Highlight: React.FC = () => {
   const { windowWidth } = useWindowSize();
-  const isMobile = windowWidth <= GlobalConstants.breakpoint.mobile;
+  const isSmallTablet = windowWidth <= GlobalConstants.breakpoint.smallTablet;
 
   return (
     <Container>
       <Tagline>Looking for Fall 2020 Internships!</Tagline>
-      {/* <SubTagline>I did my best to make it worth your while ;)</SubTagline> */}
       <SubContainer>
         {links.map((item) => {
           return (
-            <BubbleLinkWrapper key={item.label} href={item.path}>
+            <LinkContainer key={item.label} href={item.path} target="_blank">
               <BubbleContainer>
                 <Bubble icon={item.icon} />
-                {isMobile ? null : (
+                {isSmallTablet ? null : (
                   <BubbleLabel key={item.label}>{item.label}</BubbleLabel>
                 )}
               </BubbleContainer>
-            </BubbleLinkWrapper>
+            </LinkContainer>
           );
         })}
       </SubContainer>

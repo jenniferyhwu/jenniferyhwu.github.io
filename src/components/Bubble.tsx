@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled, { keyframes, Keyframes, css } from "styled-components";
 import { rollIn } from "react-animations";
 import { GitHub, FileText, Linkedin, Send } from "react-feather";

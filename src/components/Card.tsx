@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useWindowSize } from "src/utils/useWindowSize";
 import GlobalConstants from "src/theme/globalConstants";
+import LinkContainer from "./LinkContainer";
 
 interface CardProps {
   title: string;
@@ -20,15 +21,10 @@ const Text = styled.p`
   font-family: Roboto;
   line-height: 1.5em;
   margin-bottom: 0;
-
-  @media (max-width: 768px) {
-    margin-top: 0;
-  }
 `;
 
 const Header = styled.h2`
   color: #009bbd;
-  letter-spacing: 0.2em;
   margin-top: 0;
 `;
 
@@ -77,7 +73,13 @@ const Container = styled.div<{ background: string }>`
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
+    height: 100%;
+    margin: 20px 0;
+  }
+
+  @media (max-width: ${GlobalConstants.breakpoint.mobile}px) {
+    width: 100vw;
     margin: 20px 0;
     height: 16em;
     padding: 20px;
@@ -104,10 +106,6 @@ const Container = styled.div<{ background: string }>`
   &:hover::after {
     opacity: 1;
   }
-`;
-
-const LinkContainer = styled.a`
-  text-decoration: none;
 `;
 
 const Card: React.FC<CardProps> = ({

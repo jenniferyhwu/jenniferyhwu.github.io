@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Cloud as CloudIcon } from "react-feather";
 import { useWindowSize } from "src/utils/useWindowSize";
 import GlobalConstants from "src/theme/globalConstants";
+import LinkContainer from "./LinkContainer";
 
 export interface CloudProps {
   title: string;
@@ -159,19 +160,21 @@ const Cloud: React.FC<CloudProps> = (item) => {
 
   return (
     <Container>
-      <CloudHeadingContainer>
-        <CloudHeading>{item.title}</CloudHeading>
-        <CloudHeadingText>{item.hackathon}</CloudHeadingText>
-        <CloudHeadingText>-</CloudHeadingText>
-        <CloudHeadingText>{item.award}</CloudHeadingText>
-      </CloudHeadingContainer>
+      <LinkContainer href={item.devpost}>
+        <CloudHeadingContainer>
+          <CloudHeading>{item.title}</CloudHeading>
+          <CloudHeadingText>{item.hackathon}</CloudHeadingText>
+          <CloudHeadingText>-</CloudHeadingText>
+          <CloudHeadingText>{item.award}</CloudHeadingText>
+        </CloudHeadingContainer>
+      </LinkContainer>
       {isTablet ? null : (
         <>
           <CloudInfoContainer>
             <CloudText>{item.description}</CloudText>
           </CloudInfoContainer>
           <CloudDevpostContainer>
-            <CloudLink href={item.devpost} color="#8c5900">
+            <CloudLink href={item.devpost} target="_blank" color="#8c5900">
               Devpost
             </CloudLink>
             <CloudIcon
@@ -181,7 +184,7 @@ const Cloud: React.FC<CloudProps> = (item) => {
             />
           </CloudDevpostContainer>
           <CloudGithubContainer>
-            <CloudLink href={item.github} color="#8553ad">
+            <CloudLink href={item.github} target="_blank" color="#8553ad">
               GitHub
             </CloudLink>
             <CloudIcon

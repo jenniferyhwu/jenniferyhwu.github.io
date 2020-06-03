@@ -64,13 +64,13 @@ const Container = styled.div`
   margin: 4em 0;
 `;
 
-function group<T>(arr: T[], groupSize: number) {
-  const temparray = [];
-  for (let i = 0, j = arr.length; i < j; i += groupSize) {
-    temparray.push(arr.slice(i, i + groupSize));
-  }
-  return temparray;
-}
+// function group<T>(arr: T[], groupSize: number) {
+//   const temparray = [];
+//   for (let i = 0, j = arr.length; i < j; i += groupSize) {
+//     temparray.push(arr.slice(i, i + groupSize));
+//   }
+//   return temparray;
+// }
 
 const getGalleryElements = (groupSize: number) => {
   return projects.map((item) => <Cloud {...item} />);
