@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ChevronsLeft, ChevronsRight, Circle } from "react-feather";
+import { useSwipeable } from "react-swipeable";
 import GlobalConstants from "src/theme/globalConstants";
 import Button from "./Button";
 
@@ -125,6 +126,11 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
     setActiveItem(activeItem - 1);
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: changeNextItem,
+    onSwipedRight: changePrevItem,
+  });
+
   return (
     <>
       <Container>
@@ -138,7 +144,7 @@ const Gallery: React.FC<GalleryProps> = ({ numberOfItems, content }) => {
         </Button>
 
         <SubContainer className="here">
-          <ContentContainer shiftAmount={activeItem}>
+          <ContentContainer shiftAmount={activeItem} {...handlers}>
             {content.map((item, i) => (
               <ItemContainer key={i}>{item}</ItemContainer>
             ))}
