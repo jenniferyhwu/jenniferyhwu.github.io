@@ -39,10 +39,7 @@ const BubbleLabel = styled.h3`
 
 const Tagline = styled.h2`
   color: #00add2;
-
-  @media (max-width: ${GlobalConstants.breakpoint.smallTablet}px) {
-    text-align: center;
-  }
+  text-align: center;
 `;
 
 // const SubTagline = styled(Tagline)`
@@ -87,7 +84,7 @@ const Highlight: React.FC = () => {
 
   return (
     <Container>
-      <Tagline>Looking for Fall 2020 Internships!</Tagline>
+      <Tagline>Looking for Winter 2022 (and after) internships!</Tagline>
       <SubContainer>
         {links.map((item) => {
           return (

@@ -52,7 +52,7 @@ const CloudInfoContainer = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   width: calc(100% - 320px);
-  padding: 2em;
+  padding: 8em 0;
   padding-left: 1em;
   margin: 1.5em;
 

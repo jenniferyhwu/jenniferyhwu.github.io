@@ -6,7 +6,7 @@ import GlobalConstants from "src/theme/globalConstants";
 const fadeInDownAnimation: Keyframes = keyframes`${fadeInDown}`;
 
 const ME =
-  "I'm Jennifer, and I'm a software developer in my second year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create, but mostly I just like coding with fun people 😄";
+  "I'm Jennifer, and I'm a software developer in my third year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create, but mostly I just like solving problems with fun people 😄";
 
 const Text = styled.p`
   color: #19798d;
@@ -75,10 +75,12 @@ const SubContainer = styled.div`
   box-shadow: 3px 4px 26px 2px rgba(61, 105, 122, 0.07);
   position: relative;
   animation: ${css`0.8s ${fadeInDownAnimation}`};
+  min-width: 500px;
 
   @media (max-width: ${GlobalConstants.breakpoint.medium}px) {
     margin-top: 2em;
     text-align: center;
+    min-width: auto;
   }
 
   @media (max-width: 768px) {
@@ -86,6 +88,7 @@ const SubContainer = styled.div`
     padding: 0;
     background: none;
     box-shadow: none;
+    min-width: auto;
   }
 `;
 
@@ -105,7 +108,7 @@ const About: React.FC = () => {
     <Container>
       <ProfileImage src={process.env.PUBLIC_URL + "/me.png"} />
       <SubContainer>
-        <Header>Hey there!</Header>
+        <Header>Hi there!</Header>
         <Text>{ME}</Text>
       </SubContainer>
     </Container>

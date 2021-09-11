@@ -61,6 +61,7 @@ const NotesContainer = styled.div`
 const Container = styled.div<{ background: string }>`
   background: ${({ background }) => background};
   width: 100%;
+  min-width: 900px;
   //border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.07), 0 6px 15px 0 rgba(0, 0, 0, 0.03);
   display: flex;
@@ -76,6 +77,7 @@ const Container = styled.div<{ background: string }>`
   @media (max-width: ${GlobalConstants.breakpoint.tablet}px) {
     height: 100%;
     margin: 20px 0;
+    min-width: auto;
   }
 
   @media (max-width: ${GlobalConstants.breakpoint.mobile}px) {
@@ -83,6 +85,7 @@ const Container = styled.div<{ background: string }>`
     margin: 20px 0;
     height: 16em;
     padding: 20px;
+    min-width: auto;
   }
 
   &::after {

@@ -4,14 +4,32 @@ import Card from "src/components/Card";
 
 const work = [
   {
+    title: "PagerDuty (Frontend Team)",
+    link: "https://www.pagerduty.com/",
+    subtitle: "Software Developer Intern",
+    timePeriod: "May 2021 - Aug 2021",
+    description: "Driving a revamp of the invoices service, migrating apps, and investigating design systems",
+    tools: ["react", "redux", "javascript", "ruby", "aws s3"],
+    background: "#f5fdff",
+  },
+  {
+    title: "PagerDuty (Sustainability Team)",
+    link: "https://www.pagerduty.com/",
+    subtitle: "Software Developer Intern",
+    timePeriod: "Sep 2020 - Dec 2020",
+    description: "Refactoring incident details and making Kafka go zoom without boom~",
+    tools: ["ruby", "elixir", "kafka", "react", "redux", "javascript"],
+    background: "#f5fdff",
+  },
+  {
     title: "Hack the North",
     link: "https://hackthenorth.com/",
     subtitle: "Frontend Developer",
-    timePeriod: "Mar 2020 - Present",
+    timePeriod: "Mar 2020 - Jan 2021",
     description:
-      "Building out the 2020 site, attendee dashboard, component library, and more at Canada's biggest hackathon",
+      "Creating the 2020 site, attendee dashboard, component library, and more at Canada's biggest hackathon",
     tools: ["react", "typescript", "styled-components"],
-    background: "#f5fdff",
+    background: "#ebf9ff",
   },
   {
     title: "FreshBooks",
@@ -21,7 +39,7 @@ const work = [
     description:
       "Working on internal tooling as well as new features for third-party developers on the API team",
     tools: ["python", "ruby", "ember.js", "javascript"],
-    background: "#ebf9ff",
+    background: "#e0f6ff",
   },
   {
     title: "Evertz",
@@ -29,7 +47,7 @@ const work = [
     subtitle: "Software Developer Intern",
     timePeriod: "May 2019 - Aug 2019",
     description:
-      "Created the web client for a cloud orchestration product with Angular 8 from the ground up",
+      "Building out the web client for a cloud orchestration product from the ground up",
     tools: ["angular", "typescript", "java"],
     background: "#e0f6ff",
   },
