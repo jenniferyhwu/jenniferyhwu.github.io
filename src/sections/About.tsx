@@ -6,7 +6,7 @@ import GlobalConstants from "src/theme/globalConstants";
 const fadeInDownAnimation: Keyframes = keyframes`${fadeInDown}`;
 
 const ME =
-  "I'm Jennifer, and I'm a software developer in my third year of Computer Science at the University of Waterloo. I'm passionate about building things that empower everyday people to dream and create, but mostly I just like solving problems with fun people 😄";
+  "I'm Jennifer, and I'm a software developer in my fourth year of Computer Science at the University of Waterloo. Mostly, I just like improving my skills and solving fun problems with fun people 😄";
 
 const Text = styled.p`
   color: #19798d;
