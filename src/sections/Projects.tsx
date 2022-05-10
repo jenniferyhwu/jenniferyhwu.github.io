@@ -9,7 +9,7 @@ const projects: CloudProps[] = [
   {
     title: "LitDubs",
     description:
-      "Pick a video! Then a language! And voila - a video with all of its audio dubbed over with the translation.",
+      "Pick a video! Then a language! And voila - a video with its audio dubbed over with the translation.",
     hackathon: "BrickHacks 2019",
     award: "Best Use of Google Cloud Platform",
     devpost: "https://devpost.com/software/lit-dubs",
@@ -29,7 +29,7 @@ const projects: CloudProps[] = [
   {
     title: "Cordelia",
     description:
-      "So first thing we did in Boston was get lost because no one had data. Turns out combining maps and SMS solves a similar problem :D",
+      "The first thing we did in Boston was get lost because no one had data. Turns out combining maps and SMS solves a similar problem :D",
     hackathon: "BostonHacks 2018",
     award: "Best Use of HERE.com",
     devpost: "https://devpost.com/software/bostonhacks-6mabpz",
@@ -39,7 +39,7 @@ const projects: CloudProps[] = [
   {
     title: "Siloed",
     description:
-      "When we made this, we told ourselves it was so dumb that we'd never put on any resume or portfolio. But I love it, so here you go!",
+      "When we made this, we told ourselves it was so dumb that we'd never put it on any resume or portfolio.",
     hackathon: "TerribleHacks 2019",
     award: "Most Millenial Hack",
     devpost: "https://devpost.com/software/siloed",
