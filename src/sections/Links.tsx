@@ -84,7 +84,7 @@ const Highlight: React.FC = () => {
 
   return (
     <Container>
-      <Tagline>Looking for Fall 2022 internships!</Tagline>
+      <Tagline>Looking for 2023 New Grad SWE Opportunities!</Tagline>
       <SubContainer>
         {links.map((item) => {
           return (

@@ -92,7 +92,7 @@ const Projects: React.FC = () => {
 
   return (
     <Container>
-      <Header>MY PROJECTS</Header>
+      <Header>PROJECTS</Header>
       <Gallery numberOfItems={content.length} content={content} />
     </Container>
   );

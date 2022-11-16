@@ -4,6 +4,15 @@ import Card from "src/components/Card";
 
 const work = [
   {
+    title: "Gem",
+    link: "https://www.gem.com/",
+    subtitle: "Software Engineer Intern",
+    timePeriod: "Sep 2022 - Present",
+    description: "Autogenerating resumes on demand, adding note editing support, and working on candidate filters",
+    tools: ["python", "postgresql", "react", "typescript", "graphql", "aws sqs"],
+    background: "#f5fdff",
+  },
+  {
     title: "NerdWallet",
     link: "https://www.nerdwallet.com/",
     subtitle: "Software Engineer Intern",
@@ -13,16 +22,16 @@ const work = [
     background: "#f5fdff",
   },
   {
-    title: "PagerDuty (Frontend Team)",
+    title: "PagerDuty",
     link: "https://www.pagerduty.com/",
     subtitle: "Software Developer Intern",
     timePeriod: "May 2021 - Aug 2021",
     description: "Revamping the invoices service, migrating apps to containers, and investigating design systems",
     tools: ["react", "redux", "javascript", "ruby", "aws s3", "jest"],
-    background: "#f5fdff",
+    background: "#ebf9ff",
   },
   {
-    title: "PagerDuty (Sustainability Team)",
+    title: "PagerDuty",
     link: "https://www.pagerduty.com/",
     subtitle: "Software Developer Intern",
     timePeriod: "Sep 2020 - Dec 2020",
@@ -77,7 +86,7 @@ const Container = styled.div`
 const Work: React.FC = () => {
   return (
     <Container>
-      <Header>MY WORK</Header>
+      <Header>EXPERIENCE</Header>
       {work.map((item) => {
         return <Card key={item.title} {...item} />;
       })}

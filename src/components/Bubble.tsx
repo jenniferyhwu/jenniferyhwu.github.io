@@ -38,6 +38,18 @@ const Container = styled.div`
   }
 `;
 
+// const Input = (input: any) => {
+//   if (!input) {
+//     return <div>Time</div>;
+//   }
+
+//   if (Array.isArray(input)) {
+//     return input.map((element) => <div>element</div>);
+//   }
+
+//   return <div>input</div>;
+// };
+
 const Bubble: React.FC<BubbleProps> = ({ icon }) => {
   const popBubble = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.currentTarget.style.transition = "all .15s ease-out";
